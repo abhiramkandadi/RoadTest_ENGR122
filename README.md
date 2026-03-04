@@ -1,7 +1,7 @@
 # ENGR 122: Week 5 Road Test - Group 8
 
 ## Project Overview
-[cite_start]This repository contains the Arduino sketches for the Week 5 Road Test of the ENGR 122 Design of Systems course at Stevens Institute of Technology[cite: 388, 389, 390]. [cite_start]The code evaluates the basic driving performance of a custom-built, differential-drive robot utilizing continuous rotation servos and an array of ultrasonic sensors for autonomous navigation[cite: 423, 424]. 
+This repository contains the Arduino sketches for the Week 5 Road Test of the ENGR 122 Design of Systems course at Stevens Institute of Technology. The code evaluates the basic driving performance of a custom-built, differential-drive robot utilizing continuous rotation servos and an array of ultrasonic sensors for autonomous navigation. 
 
 Because the project strictly prohibits continuous time-based control (e.g., single long `delay()` functions), all tasks are programmed using rapid iterative loops and finite state machines driven by `millis()`.
 
@@ -33,18 +33,18 @@ The following libraries are required to compile these sketches:
 * `<Ultrasonic.h>`: Library used to abstract pulse-timing logic for the HC-SR04 sensors.
 
 ## Task Breakdown
-[cite_start]Per the assignment requirements, each task is programmed as a separate runnable Arduino Sketch[cite: 429, 430].
+[cite_start]Per the assignment requirements, each task is programmed as a separate runnable Arduino Sketch.
 
 1. **Task 1: Straight Driving Performance (`Task1.ino`)**
-   * [cite_start]**Goal:** Make your robot go straight at least 6 feet at a maximum speed[cite: 435].
+   * [cite_start]**Goal:** Make your robot go straight at least 6 feet at a maximum speed.
    * **Logic:** Utilizes empirically calibrated saturation values to achieve maximum RPM without signal flatlining. 
 
 2. **Task 2: Detect Wall and Stop (`Task2.ino`)**
-   * [cite_start]**Goal:** Detect an obstacle (wall) using Ultrasonic sensors and make it stop within 4 inches of the obstacle[cite: 447].
+   * [cite_start]**Goal:** Detect an obstacle (wall) using Ultrasonic sensors and make it stop within 4 inches of the obstacle.
    * **Logic:** Continuously polls the center ultrasonic sensor. When the distance drops below `100 mm` (~3.93 inches), it commands the motors to enter their "dead band" (`90` PWM) to halt.
 
 3. **Task 3: Move to Wall, Return, and Stop (`Task3.ino`)**
-   * [cite_start]**Goal:** Make your robot go straight and detect an obstacle (wall) using Ultrasonic sensors and return to the start zone and stop[cite: 462].
+   * [cite_start]**Goal:** Make your robot go straight and detect an obstacle (wall) using Ultrasonic sensors and return to the start zone and stop.
    * **Logic:** Utilizes a finite state machine. It records the exact forward travel time using `millis()`, executes a high-torque zero-radius turn, and drives back for that exact recorded duration before cutting the motors.
 
 ## Calibration & Trimming
